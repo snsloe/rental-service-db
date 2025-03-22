@@ -26,9 +26,9 @@ async def lifespan(app: FastAPI):
     if conn:
         try:
             if TABLE_NAME not in rdb.db(DB_NAME).table_list().run(conn):
-                print(f"⚠️ Таблица `{TABLE_NAME}` не найдена. Возможно, нужно выполнить `db_setup.py`.")
+                print(f"Таблица `{TABLE_NAME}` не найдена. Возможно, нужно выполнить `db_setup.py`.")
         except Exception as e:
-            print(f"❌ Ошибка при проверке таблицы: {e}")
+            print(f"Ошибка при проверке таблицы: {e}")
         finally:
             conn.close()
     yield  # Переход к запуску FastAPI
